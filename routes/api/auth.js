@@ -22,15 +22,14 @@ router.get('/', auth, async (req,res) => {
 }
 );
 
-//@route    POSTapi/auth
+//@route    POST api/auth
 //@desc     Authenticate user and get token
 //@access   Public
 router.post(
     '/',
     [
-    
     check('email', 'Please include a valid email').isEmail(),
-    check('password','Please is required').exists()
+    check('password','Password is required').exists()
     ], 
     async (req,res) => {
         const errors = validationResult(req);
@@ -45,9 +44,10 @@ router.post(
             let user = await User.findOne({email});
 
             if(!user){
+                `   `
                 return res
                 .status(400)
-                .json({ errors:[{ msg:"Invalid Credentials" }] });
+                .json({ errors:[{ msg:'Invalid Credentials' }] });
             }
 
             
@@ -56,19 +56,19 @@ router.post(
             if(!isMatch){
                 return res
                 .status(400)
-                .json({ errors:[{ msg:"Invalid Credentials" }] });
+                .json({ errors:[{ msg:'Invalid Credentials' }] });
             }
 
             const payload = {
                 user:{
                     id : user.id
                 }
-            }
+            };
 
             jwt.sign(
                 payload,
                 config.get('jwtSecret'),
-                { expiresIn:360000 },
+                { expiresIn:'5 days' },
                 (err, token)=>{
                     if(err) throw err;
                     res.json({token});
