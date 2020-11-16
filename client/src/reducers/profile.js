@@ -4,7 +4,7 @@ const initialState={
     profile: null,
     profiles: [],
     repos: [],
-    laoding: true,
+    loading: true,
     error: {}
 }
 
