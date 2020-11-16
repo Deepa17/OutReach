@@ -168,7 +168,7 @@ router.put('/experience',[ auth,[
     check('title', 'Title is required')
     .not()
     .isEmpty(),
-    check('comapny', 'Comapny is required')
+    check('company', 'Company is required')
     .not()
     .isEmpty(),
     check('from', 'From date is required')
