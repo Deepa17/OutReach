@@ -1,4 +1,4 @@
-import { CLEAR_PROFILE, GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE } from "../actions/types";
+import { CLEAR_PROFILE, GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE, GET_PROFILES, GET_REPOS } from "../actions/types";
 
 const initialState={
     profile: null,
@@ -8,6 +8,7 @@ const initialState={
     error: {}
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default function(state = initialState, action){
     const { type, payload } = action;
 
@@ -20,6 +21,18 @@ export default function(state = initialState, action){
                profile: payload,
                loading: false
            };
+        case GET_PROFILES:
+            return{
+                ...state,
+                profiles: payload,
+                loading: false
+            };
+            case GET_REPOS:
+                return{
+                    ...state,
+                    repos: payload,
+                    loading:false
+                };
         case PROFILE_ERROR:
             return {
                 ...state,
