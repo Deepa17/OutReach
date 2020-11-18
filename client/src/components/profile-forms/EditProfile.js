@@ -44,7 +44,8 @@ const EditProfile = ({
 
         });
 
-    }, [loading]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [loading, getCurrentProfile]);
     const {
         company,
         website,
