@@ -36,15 +36,13 @@ const EditProfile = ({
             skills: loading || !profile.skills ? '' : profile.skills.join(','),
             githubusername: loading || !profile.githubusername ? '' : profile.githubusername,
             bio: loading || !profile.bio ? '' : profile.bio,
-            twitter: loading || !profile.social.twitter ? '' : profile.social.twitter,
             facebook: loading || !profile.social.facebook ? '' : profile.social.facebook,
+            twitter: loading || !profile.social.twitter ? '' : profile.social.twitter,
             linkedin: loading || !profile.social.linkedin ? '' : profile.social.linkedin,
             youtube: loading || !profile.social.youtube ? '' : profile.social.youtube,
             instagram: loading || !profile.social.instagram ? '' : profile.social.instagram
 
         });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loading, getCurrentProfile]);
     const {
         company,
@@ -144,15 +142,17 @@ const EditProfile = ({
         </div>
 
         {displaySocialInputs && <Fragment>
+          <div className="form-group social-input">
+          <i className="fab fa-facebook fa-2x"></i>
+          <input type="text" placeholder="Facebook URL" name="facebook" value={facebook} onChange = { e =>onChange(e)}/>
+        </div>
+
             <div className="form-group social-input">
           <i className="fab fa-twitter fa-2x"></i>
           <input type="text" placeholder="Twitter URL" name="twitter" value={twitter} onChange = { e =>onChange(e)} />
         </div>
 
-        <div className="form-group social-input">
-          <i className="fab fa-facebook fa-2x"></i>
-          <input type="text" placeholder="Facebook URL" name="facebook" value={facebook} onChange = { e =>onChange(e)}/>
-        </div>
+        
 
         <div className="form-group social-input">
           <i className="fab fa-youtube fa-2x"></i>
