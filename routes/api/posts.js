@@ -65,7 +65,7 @@ router.get('/', auth, async(req, res)=>{
 });
 
 //@route    GET api/posts/:id
-//@desc     Get psot by id
+//@desc     Get post by id
 //@access   Private  //profiles are public not posts
 router.get('/:id', auth, async(req, res)=>{
     try {
@@ -117,23 +117,23 @@ router.delete('/:id', auth, async(req, res)=>{
 });
 
 //@route    PUT api/posts/d/:id
-//@desc     d  a post by id
+//@desc     like  a post by id
 //@access   Private  
 
-router.put('/d/:id', auth, async(req,res)=>{
+router.put('/like/:id', auth, async(req,res)=>{
     try {
         const post = await Post.findById(req.params.id);
 
-        //Check is the post has already been dd
-        if(post.ds.filter(d => d.user.toString() === req.user.id).length > 0){
-            return res.status(400).json({msg:" Post already dd "});
+        //Check is the post has already been liked
+        if(post.likes.filter(like => like.user.toString() === req.user.id).length > 0){
+            return res.status(400).json({msg:" Post already liked "});
         }
 
-        post.ds.unshift({ user: req.user.id });
+        post.likes.unshift({ user: req.user.id });
 
         await post.save();
 
-        res.json(post.ds);
+        res.json(post.likes);
 
     } catch (err) {
         console.error(err.message);
@@ -142,26 +142,26 @@ router.put('/d/:id', auth, async(req,res)=>{
 });
 
 //@route    PUT api/posts/und/:id
-//@desc     Und  a post by id
+//@desc     Unlike  a post by id
 //@access   Private  
 
-router.put('/und/:id', auth, async(req,res)=>{
+router.put('/unlike/:id', auth, async(req,res)=>{
     try {
         const post = await Post.findById(req.params.id);
 
-        //Check is the post has already been dd
-        if(post.ds.filter(d => d.user.toString() === req.user.id).length === 0){
-            return res.status(400).json({msg:" Post has not yet been dd "});
+        //Check is the post has already been liked or not
+        if(!post.likes.some(like => like.user.toString() === req.user.id)){
+            return res.status(400).json({msg:" Post has not yet been liked "});
         }
 
         //Get rempve index
-        const removeIndex = post.ds.map(d => d.user.toString()).indexOf(req.user.id);
-
-        post.ds.splice(removeIndex,1);
+        const removeIndex = post.likes.map(like => like.user.toString()).indexOf(req.user.id);
+    
+        post.likes.splice(removeIndex,1);
 
         await post.save();
 
-        res.json(post.ds);
+        res.json(post.likes);
 
     } catch (err) {
         console.error(err.message);
@@ -254,7 +254,7 @@ router.delete('/comment/:id/:comment_id', auth, async(req,res)=>{
     try {
         const post = await Post.findById(req.params.id);
         const comment = post.comments.find(comment => comment.id == req.params.comment_id);
-        //Check is the post has already been dd
+        //Check is the post has already been commented
         if(!comment){
             return res.status(404).json({ msg: "Comment does not exist" });
         }
@@ -270,6 +270,10 @@ router.delete('/comment/:id/:comment_id', auth, async(req,res)=>{
 
         post.comments.splice(removeIndex,1);
 
+       // post.comments = post.comments.filter(
+         //   ({ id }) => id !== req.params.comment_id
+         // );
+      
         await post.save();
 
         res.json(post.comments);
