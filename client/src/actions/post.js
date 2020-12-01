@@ -11,7 +11,6 @@ import {
     REMOVE_COMMENT
 } from './types';
 
-
 //Get posts
 export const getPosts = () =>async dispatch => {
     try {
@@ -171,5 +170,3 @@ export const deleteComment = (postId, commentId) =>async dispatch => {
         });
     }
 };
-
-
