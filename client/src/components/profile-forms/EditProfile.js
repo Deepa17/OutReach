@@ -135,10 +135,10 @@ const EditProfile = ({
         </div>
 
         <div className="my-2">
-          <button onClick={() => toggleSocialInputs(!displaySocialInputs)} type="button" className="btn btn-light">
+          <button onClick={() => toggleSocialInputs(!displaySocialInputs)} type="button" className="btn btn-dark">
             Add Social Network Links
           </button>
-          <span>Optional</span>
+          <span></span>
         </div>
 
         {displaySocialInputs && <Fragment>
