@@ -12,7 +12,7 @@ This repo doesn't contain node_modules folder. The installed packages are listed
 <li>react-redux, redux-thunk, redux-developer tools extension</li>
 <li>axios</li>
 <li>Moment</li>
-</li> uuid </li>
+<li>uuid </li>
 <li>Favicon(to include icons for login, logout, etc)</li>
 </ul>
 
