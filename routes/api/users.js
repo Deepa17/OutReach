@@ -9,7 +9,7 @@ const config = require('config');
 //include User file
 const User  =  require('../../models/User');
 
-//@route    POSTapi/users
+//@route    POST api/users
 //@desc     Register user
 //@access   Public
 router.post(
@@ -57,7 +57,7 @@ router.post(
            
             user.password = await bcrypt.hash(password, salt);
          
-            await user.save(); //anythong that returns a promise must be preceded by await
+            await user.save(); //anything that returns a promise must be preceded by await
 
             //return jsonwebtoken
 

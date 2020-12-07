@@ -44,7 +44,7 @@ router.post(
             let user = await User.findOne({email});
 
             if(!user){
-                `   `
+                
                 return res
                 .status(400)
                 .json({ errors:[{ msg:'Invalid Credentials' }] });
@@ -58,7 +58,7 @@ router.post(
                 .status(400)
                 .json({ errors:[{ msg:'Invalid Credentials' }] });
             }
-
+                
             const payload = {
                 user:{
                     id : user.id
@@ -68,7 +68,7 @@ router.post(
             jwt.sign(
                 payload,
                 config.get('jwtSecret'),
-                { expiresIn:'5 days' },
+                { expiresIn:3600 },
                 (err, token)=>{
                     if(err) throw err;
                     res.json({token});
