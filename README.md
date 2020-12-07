@@ -22,7 +22,7 @@ This repo doesn't contain node_modules folder. The installed packages are listed
 <li>Mongoose</li>
 <li>Express</li>
 <li>express-validator</li>
-<li>bcrypt, jsonwebtoken</li>
+<li>bcryptjs, jsonwebtoken</li>
 <li>concurrently</li>
 <li>GithubAPI</li>
 <li>Gravatar</li>
