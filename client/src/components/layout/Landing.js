@@ -8,7 +8,7 @@ export const Landing = ({ isAuthenticated }) => {
   if(isAuthenticated){
     return <Redirect to= '/dashboard' />;
   }
-    return (
+    return (<div>
     <section className="landing">
       <div className="dark-overlay">
         <div className="landing-inner">
@@ -24,6 +24,12 @@ export const Landing = ({ isAuthenticated }) => {
         </div>
       </div>
     </section>
+    
+    <div id="copyright">
+    <span id="span">&#169; Deepa|Vivek|Deekshitha|Ashwini</span> 
+    <p id="copyright-size"></p> 
+    </div>
+    </div>
     )
 }
 
