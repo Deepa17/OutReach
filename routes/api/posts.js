@@ -72,7 +72,7 @@ router.get('/:id', auth, async(req, res)=>{
         const post = await Post.findById(req.params.id); //most recent first
         
         if(!post){
-            return res.status(404).json({ mdg:"Post Not found" });
+            return res.status(404).json({ msg:"Post Not found" });
         }
         res.json(post);
 
