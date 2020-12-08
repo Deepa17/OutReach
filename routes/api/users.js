@@ -19,8 +19,9 @@ router.post(
     .not()
     .isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
-    check('password','Please enter a password with 8 or more characters').isLength({min:8})
-    ], 
+    check("password", "Password must include one lowercase character, one uppercase character, a number, and a special character.")
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@,_]).{8,}$/)
+    ],
     async (req,res) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()){
