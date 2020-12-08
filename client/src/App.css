@@ -33,6 +33,17 @@ ul {
 img {
   width: 100%;
 }
+/*copyright*/
+#copyright {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+#span {
+  font-size:20px;
+  color:white;
+}
 
 /* Utilities */
 .container {
