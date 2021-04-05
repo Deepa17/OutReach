@@ -1,5 +1,5 @@
 # OutReach:<h2>A website for connecting developers <h2> 
- This website is built MERN stack. The users can register and login, and create their own profile, by including their education, job-experience, social medial handles and so on. 
+ This website is built using MERN stack. The users can register and login, and create their own profile, by including their education, job-experience, social medial handles and so on. 
  There's also a functionality to put up posts and also delete them, if the user doesn't want them anymore. Other users can comment, like and unlike these posts and can have 
  discussions too.
 <h4>Note:</h4>
